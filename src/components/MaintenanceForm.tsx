@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -80,6 +79,7 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      partId: '',  // Initialize with empty string instead of undefined
       description: '',
       date: new Date(),
       cost: 0,
@@ -89,7 +89,8 @@ const MaintenanceForm: React.FC<MaintenanceFormProps> = ({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    onAddMaintenance(values);
+    // Now values will have all required fields defined since we've fixed the defaultValues
+    onAddMaintenance(values as MaintenanceFormData);
     toast({
       title: "Maintenance record added",
       description: "Your maintenance record has been successfully added.",

@@ -69,8 +69,7 @@ const VehiclePartStatus: React.FC<VehiclePartStatusProps> = ({ part, className }
         </div>
         <Progress 
           value={usagePercentage} 
-          className="h-2"
-          indicatorClassName={getProgressColor()}
+          className={`h-2 ${getProgressColor()}`}
         />
       </div>
       
