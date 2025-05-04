@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -97,5 +91,52 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+/* Custom styles for our application */
+.health-meter-gradient {
+  background: conic-gradient(
+    #4CAF50 0% var(--health-percentage),
+    #FFD700 var(--health-percentage) calc(var(--health-percentage) + 30%),
+    #FF4136 calc(var(--health-percentage) + 30%) 100%
+  );
+}
+
+.maintenance-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 2px;
+  background: #e2e8f0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #0F52BA;
+  top: 22px;
+}
+
+.auto-part-icon {
+  transition: all 0.3s ease;
+}
+
+.auto-part-icon:hover {
+  transform: scale(1.1);
+}
+
+.dashboard-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
